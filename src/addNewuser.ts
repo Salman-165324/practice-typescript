@@ -25,12 +25,19 @@ function updateUser(id: number, updates: UpdatedUser) {
 // updateUser(1, { username: "new_john_doe" });
 // updateUser(4, { role: "contributor" });
 
-function addNewUser(newUser: any): User {
+function addNewUser(newUser: Omit<User, "id">): User {
     // Create a new variable called `user`, add an `id` property to it
     // and spread in all the properties of the `newUser` object. Think
     // about how you should set the type for this `user` object.
     // Push the new object to the `users` array, and return the object
     // from the function at the end
+
+    const user:User = {id:nextUserId++, ...newUser}; 
+
+    users.push(user); 
+
+    return user; 
+
 }
 
 // example usage:
