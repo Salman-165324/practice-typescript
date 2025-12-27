@@ -8,8 +8,7 @@ type OrderItem = {
 
 type OrderQueue = OrderItem[];
 
-type NewPizza = { name: string; price: number };
-
+ 
 const menu: MenuItem[] = [];
 
 let cashInRegister = 100;
@@ -17,9 +16,10 @@ let nextOrderId = 1;
 let menuId = 1;
 const orderQueue: OrderQueue = [];
 
-function addNewPizza(pizzaObj: NewPizza): void {
+function addNewPizza(pizzaObj: Omit<MenuItem, "id">): MenuItem {
   const newPizzaObj = { id: menuId++, ...pizzaObj };
   menu.push(newPizzaObj);
+  return newPizzaObj; 
 }
 
 addNewPizza({ name: "Margherita", price: 8 });
